@@ -1,0 +1,13 @@
+<h1>Hello Food!</h1>
+
+<table>
+  
+  <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.food_type %></td>
+        <td><%= food.expiration %></td>
+      </tr>
+  <% end %> 
+
+</table>
