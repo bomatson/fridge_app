@@ -1,7 +1,31 @@
 class FoodsController < ApplicationController
 
+  def new
+    @food = Food.new
+  end
+
   def index
     @foods = Food.all
+  end
+
+  def show
+    #only want one instance
+    #get the instance from the database with ID, name
+  end
+
+  def create
+    @food = Food.new(food_params)
+
+    if @food.save
+      redirect_to '/'
+    else
+      render 'new'
+    end
+  end
+
+
+
+
     #foods = HTTParty('food_api')
     #foods.each do |food|
 
@@ -11,6 +35,9 @@ class FoodsController < ApplicationController
     #    )
     
     #end 
-  end
+  private
 
+  def food_params
+    params.require(:food).permit(:name, :expiration, :food_type)
+  end
 end
