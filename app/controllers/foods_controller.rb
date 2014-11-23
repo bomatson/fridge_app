@@ -11,6 +11,7 @@ class FoodsController < ApplicationController
   def show
     #only want one instance
     #get the instance from the database with ID, name
+    @food = Food.find(params[:id])
   end
 
   def create
@@ -23,18 +24,20 @@ class FoodsController < ApplicationController
     end
   end
 
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to '/'
+  end
+  #foods = HTTParty('food_api')
+  #foods.each do |food|
 
+  #  Food.create(
+  #    name: food['name'],
+  #    expiration: food['expiration']
+  #    )
 
-
-    #foods = HTTParty('food_api')
-    #foods.each do |food|
-
-    #  Food.create(
-    #    name: food['name'],
-    #    expiration: food['expiration']
-    #    )
-    
-    #end 
+  #end
   private
 
   def food_params
