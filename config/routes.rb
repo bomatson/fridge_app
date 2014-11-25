@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'foods#index'
+
   resources :foods
 
   # The priority is based upon order of creation: first created -> highest priority.

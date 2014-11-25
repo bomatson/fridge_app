@@ -2,13 +2,18 @@
 
 <a href='/foods/new'>Create a new food</a>
 <table>
-  
+
+  <th>Name</th>
+  <th>Type</th>
+  <th>Expiration</th>
   <% @foods.each do |food| %>
-      <tr>
-        <td><%= food.name %></td>
-        <td><%= food.food_type %></td>
-        <td><%= food.expiration %></td>
-      </tr>
-  <% end %> 
+    <tr>
+      <td><%= link_to food.name, "/foods/#{food.id}" %></td>
+
+      <td><%= food.food_type %></td>
+      <td><%= food.expiration %></td>
+      <td><%= link_to 'Remove food', food_path(food.id), method: :delete %></td>
+    </tr>
+  <% end %>
 
 </table>
