@@ -8,7 +8,8 @@
   <th>Expiration</th>
   <% @foods.each do |food| %>
     <tr>
-      <td><%= link_to food.name, food_path(food.id) %></td>
+      <td><%= link_to food.name, "/foods/#{food.id}" %></td>
+
       <td><%= food.food_type %></td>
       <td><%= food.expiration %></td>
       <td><%= link_to 'Remove food', food_path(food.id), method: :delete %></td>
