@@ -1,0 +1,16 @@
+<h1>Editing your food</h1>
+
+<%= form_for @food do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :food_type %>
+  <%= f.select :food_type, [['Fat', 'fat'], ['Sugar', 'sugar'], ['Dairy','dairy'], ['Umami', 'umami']] %>
+
+  <%= f.label :expiration %>
+  <%= f.date_field :expiration %>
+
+  <%= f.submit 'Update Food' %>
+
+<% end %>

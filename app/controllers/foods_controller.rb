@@ -14,12 +14,29 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
+  def edit
+    @food = Food.find(params[:id])
+  end
+
+  def update
+    @food = Food.find(params[:id])
+
+    if @food.update_attributes(food_params)
+      redirect_to "/foods/#{@food.id}"
+    else
+      flash[:notice] =  @food.errors.full_messages.to_sentence
+
+      render :edit
+    end
+  end
+
   def create
     @food = Food.new(food_params)
 
     if @food.save
-      redirect_to '/'
+      redirect_to '/', notice: 'Awesome!'
     else
+      flash[:notice] =  @food.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -27,6 +44,7 @@ class FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
+
     redirect_to '/'
   end
   #foods = HTTParty('food_api')
